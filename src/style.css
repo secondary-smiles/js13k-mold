@@ -1,0 +1,12 @@
+#board-holder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#board {
+    width: 90vmin;
+    height: 90vmin;
+
+    border: black 1px solid;
+}

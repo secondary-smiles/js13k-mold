@@ -21,12 +21,9 @@ async function initGrid(
     row.style.height = `${board.clientHeight / ynum}px`;
 
     for (let x = 0; x < xnum; x++) {
-      row.innerHTML += `<div class='grid grid-dead' id='grid-${y}${x}'><div>`;
-      let grid: Grid = {
-        state: 0,
-        x: x,
-        y: y,
-      };
+      const id = `grid-${x}-${y}`;
+      row.innerHTML += `<div class='grid grid-dead' id='${id}'><div>`;
+      let grid = new Grid(id, { x, y });
       returnArr.push(grid);
     }
   }

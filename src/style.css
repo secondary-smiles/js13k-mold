@@ -9,4 +9,18 @@
     height: 90vmin;
 
     border: black 1px solid;
+
+    display: flex;
+    flex-direction: column;
+
 }
+
+.row {
+    display: flex;
+    width: 100%;
+}
+
+.row, .grid {
+    border: 1px solid black;
+}
+

@@ -1,0 +1,22 @@
+.board-interface {
+  width: 90px;
+  height: 30px;
+
+  margin: 20px;
+
+  border-radius: 8px;
+
+  border: none;
+  background-color: #ffb5b3;
+
+  transition: 0.2s;
+}
+
+.board-interface:hover {
+  box-shadow: 0 0 0 2px #989bff;
+}
+
+.board-interface:active {
+  background-color: #de9794;
+  box-shadow: 0 0 0 1px #989bff;
+}

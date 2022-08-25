@@ -1,0 +1,30 @@
+#board-holder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#board {
+  width: 90vmin;
+  height: 90vmin;
+
+  display: flex;
+  flex-direction: column;
+
+  border: 1px solid black;
+}
+
+.row {
+  display: flex;
+  width: 100%;
+}
+
+.grid {
+  width: 100%;
+  border: 1px solid black;
+  transition: 0.1s;
+}
+
+.grid:hover {
+  background-color: #989bff;
+}

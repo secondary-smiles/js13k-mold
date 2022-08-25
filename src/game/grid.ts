@@ -1,4 +1,5 @@
 import { gameData } from "../main";
+import { gameState } from "../utils/board-interface";
 
 type Vec2 = {
   x: number;
@@ -24,6 +25,9 @@ class Grid {
 
   set state(v: number) {
     this._prev = this.state;
+    if (this.state != 0) {
+      return;
+    }
     this._sIndex = v;
     this.setHooks();
   }
@@ -54,7 +58,7 @@ class Grid {
         ob.style.background = "#000000";
         break;
       default:
-        break
+        break;
     }
   }
 }
@@ -84,9 +88,10 @@ async function initRemoveGridListeners() {
 }
 
 function updateGridState(e: Event) {
+  // @ts-ignore
   let gridInd = findGridItem(e.target!.id);
   let grid = gameData.gridArr![gridInd];
-  grid.state = Math.floor(Math.random() * 5);
+  grid.state = gameState.switchP();
 }
 
 export { Grid, initAddGridListeners, initRemoveGridListeners, findGridItem };

@@ -21,8 +21,8 @@
 
 .grid {
   width: 100%;
-  border: 1px solid black;
-  transition: 0.1s;
+  border: 0.5px solid black;
+  /*transition: 0.1s;*/
 }
 
 .grid:hover {

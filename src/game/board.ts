@@ -1,9 +1,14 @@
 import { Grid } from "./grid";
 
-async function initBoard(x: number, y: number, board: HTMLDivElement) {
+async function initBoard(
+  x: number,
+  y: number,
+  board: HTMLDivElement
+): Promise<Array<Grid>> {
   board.innerHTML = "";
-  /*let boardArr =*/ await initGrid(x, y, board);
+  let boardArr = await initGrid(x, y, board);
   board.style.border = "0px";
+  return boardArr;
 }
 
 async function initGrid(
@@ -19,7 +24,7 @@ async function initGrid(
     row.style.height = `${board.clientHeight / ynum}px`;
 
     for (let x = 0; x < xnum; x++) {
-      row.innerHTML += `<div class='grid' id='grid-${x}'><div>`;
+      row.innerHTML += `<div class='grid' id='grid-${y}${x}'><div>`;
       const obj = document.querySelector<HTMLDivElement>(`#grid-${x}`)!;
       let grid: Grid = {
         state: 0,

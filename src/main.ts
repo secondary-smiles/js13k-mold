@@ -1,6 +1,5 @@
 import "./style/style.css";
 
-import { initBoard } from "./game/board";
 import { initButtons } from "./utils/board-interface";
 
 document.querySelector<HTMLDivElement>("#app")!.innerHTML = `

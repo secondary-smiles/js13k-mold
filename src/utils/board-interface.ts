@@ -1,7 +1,20 @@
-import { globalx, globaly, board } from "../main";
+import { board, globalx, globaly } from "../main";
 import { initBoard } from "../game/board";
+import {updatePlayerGlobal} from "../game/player";
 
-let running = false;
+let gameState = {
+  state: false,
+  setHooks() {
+    updatePlayerGlobal(this);
+  },
+  get running() {
+    return this.state;
+  },
+  set running(v: boolean) {
+    this.state = v;
+    this.setHooks();
+  },
+};
 
 function initButtons() {
   let startButton = document.querySelector<HTMLButtonElement>("#start")!;
@@ -9,23 +22,17 @@ function initButtons() {
   stopButton.style.display = "none";
 
   startButton.addEventListener("click", async () => {
-    running = true;
+    gameState.running = true;
     stopButton.style.display = "inline";
     startButton.style.display = "none";
     await initBoard(globalx, globaly, board);
-    window.addEventListener("resize", event);
   });
 
   stopButton.addEventListener("click", async () => {
-    running = false;
+    gameState.running = false;
     stopButton.style.display = "none";
     startButton.style.display = "inline";
-      window.removeEventListener("resize", event);
   });
 }
 
-async function event() {
-    initBoard(globalx, globaly, board)
-}
-
-export { running, initButtons };
+export { gameState, initButtons };

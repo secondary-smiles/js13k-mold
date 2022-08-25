@@ -1,6 +1,7 @@
 import "./style/style.css";
 
 import { initButtons } from "./utils/board-interface";
+import { Game } from "./utils/game-globals";
 
 document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
 <div id="sub-app">
@@ -12,10 +13,13 @@ document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
 </div>
 `;
 
-const globalx = 40;
-const globaly = 40;
+let gameData: Game = {
+  globaly: 20,
+  globalx: 20,
+  board: document.querySelector<HTMLDivElement>("#board")!,
+  gridArr: undefined,
+};
 
-const board = document.querySelector<HTMLDivElement>("#board")!;
 initButtons();
 
-export { globaly, globalx, board };
+export { gameData };

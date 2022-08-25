@@ -1,14 +1,11 @@
 import { Grid } from "./grid";
+import { gameData } from "../main";
 
-async function initBoard(
-  x: number,
-  y: number,
-  board: HTMLDivElement
-): Promise<Array<Grid>> {
+async function initBoard(x: number, y: number, board: HTMLDivElement) {
   board.innerHTML = "";
   let boardArr = await initGrid(x, y, board);
   board.style.border = "0px";
-  return boardArr;
+  gameData.gridArr = boardArr;
 }
 
 async function initGrid(
@@ -24,8 +21,8 @@ async function initGrid(
     row.style.height = `${board.clientHeight / ynum}px`;
 
     for (let x = 0; x < xnum; x++) {
-      row.innerHTML += `<div class='grid' id='grid-${y}${x}'><div>`;
-      const obj = document.querySelector<HTMLDivElement>(`#grid-${x}`)!;
+      row.innerHTML += `<div class='grid-dead' id='grid-${y}${x}'><div>`;
+      const obj = document.querySelector<HTMLDivElement>(`#grid-${y}${x}`)!;
       let grid: Grid = {
         state: 0,
         x: x,
@@ -38,4 +35,22 @@ async function initGrid(
   return returnArr;
 }
 
-export { initBoard };
+function updateBoardStylesGlobal(stateObj: any) {
+  switch (stateObj.state) {
+    case true:
+      updateClassName("grid-dead", "grid-active");
+      break;
+    default:
+      updateClassName("grid-active", "grid-dead");
+      break;
+  }
+}
+
+function updateClassName(current: string, next: string) {
+  let list = document.getElementsByClassName(current)!;
+  Array.from(list).forEach(function (e) {
+    e.className = next;
+  });
+}
+
+export { initBoard, updateBoardStylesGlobal };

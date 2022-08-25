@@ -1,11 +1,13 @@
-import { board, globalx, globaly } from "../main";
+import { gameData } from "../main";
 import { initBoard } from "../game/board";
-import {updatePlayerGlobal} from "../game/player";
+import { updatePlayerGlobal } from "../game/player";
+import { updateBoardStylesGlobal } from "../game/board";
 
 let gameState = {
   state: false,
   setHooks() {
-    updatePlayerGlobal(this);
+    updatePlayerGlobal(this).then();
+    updateBoardStylesGlobal(this);
   },
   get running() {
     return this.state;
@@ -22,16 +24,16 @@ function initButtons() {
   stopButton.style.display = "none";
 
   startButton.addEventListener("click", async () => {
-    gameState.running = true;
     stopButton.style.display = "inline";
     startButton.style.display = "none";
-    await initBoard(globalx, globaly, board);
+    await initBoard(gameData.globalx, gameData.globaly, gameData.board);
+    gameState.running = true;
   });
 
   stopButton.addEventListener("click", async () => {
-    gameState.running = false;
     stopButton.style.display = "none";
     startButton.style.display = "inline";
+    gameState.running = false;
   });
 }
 

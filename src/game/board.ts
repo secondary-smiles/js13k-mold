@@ -11,7 +11,7 @@ async function initGrid(xnum: number, ynum: number, board: HTMLDivElement) {
 
         for (let x = 0; x < xnum; x++) {
             row.innerHTML += `<div class='grid' id='grid-${x}'><div>`;
-            const grid = document.querySelector<HTMLDivElement>(`#grid-${x}`)!;
+            // const grid = document.querySelector<HTMLDivElement>(`#grid-${x}`)!;
         }
     }
 }

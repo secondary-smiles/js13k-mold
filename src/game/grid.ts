@@ -1,35 +1,26 @@
-import { gameData } from "../main";
-
 type Grid = {
   state: number;
   x: number;
   y: number;
-  obj: HTMLDivElement;
 };
 
-async function initAddGridListeners() {
-  if (!gameData.gridArr) {
-    return;
-  }
-  gameData.gridArr.forEach((item) => {
-    console.log(item);
-    item.obj.addEventListener("click", handleGridState);
+function initAddGridListeners() {
+  const objects = document.querySelectorAll(".grid");
+  objects.forEach(o => {
+    o.addEventListener("click", updateGridState)
   });
 }
 
 async function initRemoveGridListeners() {
-  if (!gameData.gridArr) {
-    return;
-  }
-  gameData.gridArr.forEach((item) => {
-    console.log(item);
-    item.obj.removeEventListener("click", handleGridState);
-  });
+  const objects = document.querySelectorAll(".grid");
+  objects.forEach(o => {
+    o.removeEventListener("click", updateGridState)
+  })
 }
 
-function handleGridState(evt: any) {
-  console.log("test")
-  console.log(evt);
+function updateGridState(e: Event) {
+  let grid = e.target!;
+  grid.style.background = "black";
 }
 
 export { initAddGridListeners, initRemoveGridListeners };

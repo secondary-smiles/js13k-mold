@@ -5,6 +5,7 @@ import { updateBoardStylesGlobal } from "../game/board";
 
 let gameState = {
   state: false,
+  player: 0,
   setHooks() {
     updatePlayerGlobal(this).then();
     updateBoardStylesGlobal(this);

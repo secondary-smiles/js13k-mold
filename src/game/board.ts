@@ -21,13 +21,11 @@ async function initGrid(
     row.style.height = `${board.clientHeight / ynum}px`;
 
     for (let x = 0; x < xnum; x++) {
-      row.innerHTML += `<div class='grid-dead' id='grid-${y}${x}'><div>`;
-      const obj = document.querySelector<HTMLDivElement>(`#grid-${y}${x}`)!;
+      row.innerHTML += `<div class='grid grid-dead' id='grid-${y}${x}'><div>`;
       let grid: Grid = {
         state: 0,
         x: x,
         y: y,
-        obj: obj,
       };
       returnArr.push(grid);
     }
@@ -47,9 +45,9 @@ function updateBoardStylesGlobal(stateObj: any) {
 }
 
 function updateClassName(current: string, next: string) {
-  let list = document.getElementsByClassName(current)!;
+  let list = document.getElementsByClassName(current);
   Array.from(list).forEach(function (e) {
-    e.className = next;
+    e.className = `grid ${next}`;
   });
 }
 

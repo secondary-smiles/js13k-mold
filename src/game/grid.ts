@@ -1,5 +1,6 @@
 import { gameData } from "../main";
 import { gameState } from "../utils/board-interface";
+import { State } from "./states/state";
 
 type Vec2 = {
   x: number;
@@ -8,58 +9,35 @@ type Vec2 = {
 
 class Grid {
   public id: string;
-  private _sIndex: number;
+  private _sIndex: State;
   private _prev: number;
   coord: Vec2;
 
   constructor(id: string, coord: Vec2) {
     this.id = id;
-    this._sIndex = 0;
     this._prev = 0;
     this.coord = coord;
+    this._sIndex = new State(0, this.id);
   }
 
   get state() {
-    return this._sIndex;
+    return this._sIndex.index;
   }
 
   set state(v: number) {
     this._prev = this.state;
     if (this.state != 0) {
+      gameState.switchP();
       return;
     }
-    this._sIndex = v;
+    this._sIndex.index = v;
     this.setHooks();
   }
 
   setHooks() {
     console.log(
-      `Grid - ${this.id} has been state changed to ${this.state} from ${this._prev}`
+      `${this.id} has been state changed to ${this.state} from ${this._prev}`
     );
-    this.gridSetColor(this.state);
-  }
-
-  gridSetColor(v: number) {
-    let ob = document.querySelector<HTMLDivElement>("#" + this.id)!;
-    switch (v) {
-      case 0:
-        ob.style.background = "transparent";
-        break;
-      case 1:
-        ob.style.background = "#8CFFB3";
-        break;
-      case 2:
-        ob.style.background = "#5AC7FF";
-        break;
-      case 3:
-        ob.style.background = "#FFE680";
-        break;
-      case 4:
-        ob.style.background = "#000000";
-        break;
-      default:
-        break;
-    }
   }
 }
 

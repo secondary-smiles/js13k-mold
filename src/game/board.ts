@@ -1,11 +1,11 @@
 import { Grid } from "./grid";
 import { gameData } from "../main";
+import {Vec2} from "./grid";
 
 async function initBoard() {
   gameData.board.innerHTML = "";
-  let boardArr = await initGrid();
   // gameData.board.style.border = "0px";
-  gameData.gridArr = boardArr;
+  gameData.gridArr = await initGrid();
 }
 
 async function initGrid(): Promise<Array<Grid>> {
@@ -19,7 +19,7 @@ async function initGrid(): Promise<Array<Grid>> {
     for (let x = 0; x < gameData.globalx; x++) {
       const id = `grid-${x}-${y}`;
       row.innerHTML += `<div class='grid grid-dead' id='${id}'><div>`;
-      let grid = new Grid(id, { x, y });
+      let grid = new Grid(id, new Vec2(x, y));
       returnArr.push(grid);
     }
   }

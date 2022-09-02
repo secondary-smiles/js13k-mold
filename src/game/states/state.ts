@@ -53,7 +53,7 @@ class State {
         ob.className += "grid grid-active";
         break;
       case 1:
-        this.kind = Mold
+        this.kind = Mold;
         ob.className = "grid grid-active mold";
         break;
       case 2:

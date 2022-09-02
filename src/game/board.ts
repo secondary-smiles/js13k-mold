@@ -1,11 +1,13 @@
 import { Grid } from "./grid";
 import { gameData } from "../main";
-import {Vec2} from "./grid";
+import { Vec2 } from "./grid";
+import { Mold } from "./states/mold";
 
 async function initBoard() {
   gameData.board.innerHTML = "";
   // gameData.board.style.border = "0px";
   gameData.gridArr = await initGrid();
+  gameData.mold = new Mold(gameData.gridArr[0], 1);
 }
 
 async function initGrid(): Promise<Array<Grid>> {

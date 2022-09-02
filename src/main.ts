@@ -18,8 +18,11 @@ let gameData: Game = {
   globaly: 40,
   board: document.querySelector<HTMLDivElement>("#board")!,
   gridArr: undefined,
+  mold: undefined,
 };
 
 initButtons();
+
+console.log("Main finished.");
 
 export { gameData };

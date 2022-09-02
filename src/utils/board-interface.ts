@@ -1,19 +1,25 @@
 import { initBoard, updateBoardStylesGlobal } from "../game/board";
 import { updatePlayerGlobal } from "../game/player";
+import { moldLoop } from "./mold-loop";
 
 let gameState = {
   state: false,
   player: 2,
-  setHooks() {
-    updatePlayerGlobal(this).then();
-    updateBoardStylesGlobal(this);
-  },
   get running() {
     return this.state;
   },
   set running(v: boolean) {
     this.state = v;
     this.setHooks();
+  },
+
+  setHooks() {
+    updatePlayerGlobal(this).then();
+    updateBoardStylesGlobal(this);
+
+    if (this.running) {
+      moldLoop(500).then();
+    }
   },
 
   switchP(): number {

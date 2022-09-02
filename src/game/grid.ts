@@ -19,12 +19,10 @@ class Vec2 {
 class Grid {
   public id: string;
   private _sIndex: State;
-  private _prev: number;
   coord: Vec2;
 
   constructor(id: string, coord: Vec2) {
     this.id = id;
-    this._prev = 0;
     this.coord = coord;
     this._sIndex = new State(0, this.id);
   }
@@ -34,20 +32,19 @@ class Grid {
   }
 
   set state(v: number) {
-    this._prev = this.state;
     if (this.state != 0) {
       gameState.switchP();
       return;
     }
     this._sIndex.index = v;
-    this.surrounding();
+    // this.surrounding();
     this.setHooks();
   }
 
   setHooks() {
-    console.log(
-      `${this.id} has been state changed to ${this.state} from ${this._prev}`
-    );
+    // console.log(
+    //   `${this.id} has been state changed to ${this.state} from ${this._prev}`
+    // );
   }
 
   surrounding(): Array<Grid> {
@@ -64,7 +61,10 @@ class Grid {
     ];
     surroundingMath.forEach((n) => {
       let coords = this.coord.add(n);
-      returnArr.push(gameData.gridArr![findGridItem(`grid-${coords.x}-${coords.y}`)]);
+      let gridi = findGridItem(`grid-${coords.x}-${coords.y}`);
+      if (gridi >= 0) {
+        returnArr.push(gameData.gridArr![gridi]);
+      }
     });
 
     return returnArr;
@@ -100,9 +100,6 @@ function updateGridState(e: Event) {
   let gridInd = findGridItem(e.target!.id);
   let grid = gameData.gridArr![gridInd];
   grid.state = gameState.switchP();
-  grid.surrounding().forEach(g => {
-    g.state = gameState.switchP();
-  });
 }
 
 export {

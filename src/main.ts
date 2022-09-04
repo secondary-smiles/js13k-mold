@@ -23,6 +23,4 @@ let gameData: Game = {
 
 initButtons();
 
-console.log("Main finished.");
-
 export { gameData };

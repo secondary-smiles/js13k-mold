@@ -33,11 +33,12 @@ class Grid {
 
   set state(v: number) {
     if (this.state != 0) {
-      gameState.switchP();
       return;
     }
     this._sIndex.index = v;
-    // this.surrounding();
+    if (v == 2 || v == 3) {
+      gameState.switchP();
+    }
     this.setHooks();
   }
 
@@ -99,7 +100,8 @@ function updateGridState(e: Event) {
   // @ts-ignore
   let gridInd = findGridItem(e.target!.id);
   let grid = gameData.gridArr![gridInd];
-  grid.state = gameState.switchP();
+  // grid.state = gameState.switchP();
+  grid.state = gameState.player;
 }
 
 export {

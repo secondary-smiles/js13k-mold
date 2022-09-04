@@ -2,13 +2,21 @@ import { gameState } from "./board-interface";
 import { gameData } from "../main";
 
 async function moldLoop(wait: number = 1000) {
+  let edgeRecalcCounter = 0;
   let interval = setInterval(() => {
     if (!gameState.running) {
       clearInterval(interval);
       return;
     }
-    console.log("Mold loop running.");
+
+    if (edgeRecalcCounter > 5) {
+      gameData.mold?.edges;
+      edgeRecalcCounter = 0;
+    }
+
     gameData.mold?.grow();
+
+    edgeRecalcCounter += 1;
   }, wait);
 }
 

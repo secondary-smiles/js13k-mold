@@ -27,7 +27,7 @@ class Mold {
     // console.log("State has changed");
   }
 
-  get edges() {
+  calcEdges() {
     let returnList: Array<Grid> = [];
     this.occupied.forEach((g) => {
       let s = g.surrounding();
@@ -40,6 +40,11 @@ class Mold {
     });
     this.edges = returnList;
     return returnList;
+  }
+
+  get edges() {
+    this.p_edges = this.calcEdges();
+    return this.p_edges;
   }
 
   set edges(newEdges: Array<Grid>) {

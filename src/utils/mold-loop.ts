@@ -10,7 +10,7 @@ async function moldLoop(wait: number = 1000) {
     }
 
     if (edgeRecalcCounter > 5) {
-      gameData.mold?.edges;
+      gameData.mold?.edges
       edgeRecalcCounter = 0;
     }
 

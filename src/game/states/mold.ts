@@ -11,7 +11,7 @@ class Mold {
     this.source = source;
     this.lState = state;
     this.occupied.push(source);
-    this.p_edges = [];
+    this.p_edges = this.occupied;
   }
 
   get state() {
@@ -32,9 +32,9 @@ class Mold {
     this.occupied.forEach((g) => {
       let s = g.surrounding();
       s.forEach((n) => {
-        dumb_loop: if (n.state == 0) {
+        if (n.state == 0) {
           returnList.push(g);
-          break dumb_loop;
+            return;
         }
       });
     });
@@ -52,10 +52,7 @@ class Mold {
   }
 
   grow() {
-    this.occupied.forEach((g) => {
-      g.state = 1;
-    });
-    let item = this.edges[Math.floor(Math.random() * this.edges.length)];
+    let item = this.p_edges[Math.floor(Math.random() * this.p_edges.length)];
     item.surrounding().forEach((g) => {
       if (g.state == 0) {
         this.occupied.push(g);

@@ -18,7 +18,7 @@ let gameState = {
     updateBoardStylesGlobal(this);
 
     if (this.running) {
-      moldLoop(500).then();
+      moldLoop(1).then();
     }
   },
 

@@ -1,6 +1,7 @@
 import { initBoard, updateBoardStylesGlobal } from "../game/board";
 import { updatePlayerGlobal } from "../game/player";
 import { moldLoop } from "./mold-loop";
+import { gameData } from "../main";
 
 let gameState = {
   state: false,
@@ -19,6 +20,11 @@ let gameState = {
 
     if (this.running) {
       moldLoop(1).then();
+    }
+    if (!this.running) {
+      gameData.gridArr!.forEach((grid) => {
+        grid.opacity = 1;
+      });
     }
   },
 

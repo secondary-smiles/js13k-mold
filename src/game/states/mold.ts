@@ -34,7 +34,7 @@ class Mold {
       s.forEach((n) => {
         if (n.state == 0) {
           returnList.push(g);
-            return;
+          return;
         }
       });
     });
@@ -57,6 +57,25 @@ class Mold {
       if (g.state == 0) {
         this.occupied.push(g);
         g.state = 1;
+      }
+    });
+  }
+
+  fade(amount: number) {
+    this.occupied.forEach((g) => {
+      g.opacity -= amount;
+      if (g.opacity <= 0) {
+        g.opacity = 0;
+        let index = this.occupied.indexOf(g);
+        if (index > -1) {
+          this.occupied.splice(index, 1);
+        }
+
+        index = this.p_edges.indexOf(g);
+        if (index > -1) {
+          this.p_edges.splice(index, 1);
+        }
+        g.state = 0;
       }
     });
   }

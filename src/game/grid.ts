@@ -20,11 +20,25 @@ class Grid {
   public id: string;
   private _sIndex: State;
   coord: Vec2;
+  n_opacity: number;
 
   constructor(id: string, coord: Vec2) {
     this.id = id;
     this.coord = coord;
     this._sIndex = new State(0, this.id);
+    this.n_opacity = 1;
+  }
+
+  get opacity() {
+    return this.n_opacity;
+  }
+
+  set opacity(v: number) {
+    this.n_opacity = v;
+    let el = document.getElementById(this.id);
+    if (el) {
+      el.style.opacity = v.toString();
+    }
   }
 
   get state() {
@@ -32,9 +46,9 @@ class Grid {
   }
 
   set state(v: number) {
-    if (this.state != 0) {
-      return;
-    }
+    // if (this.state != 0) {
+    //   return;
+    // }
     this._sIndex.index = v;
     if (v == 2 || v == 3) {
       gameState.switchP();
@@ -62,12 +76,11 @@ class Grid {
     ];
     surroundingMath.forEach((n) => {
       let coords = this.coord.add(n);
-      let gridi = findGridItem(`grid-${coords.x}-${coords.y}`);
-      if (gridi >= 0) {
-        returnArr.push(gameData.gridArr![gridi]);
+      let gridIndex = findGridItem(`grid-${coords.x}-${coords.y}`);
+      if (gridIndex >= 0) {
+        returnArr.push(gameData.gridArr![gridIndex]);
       }
     });
-
     return returnArr;
   }
 }

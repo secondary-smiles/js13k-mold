@@ -50,7 +50,8 @@ class State {
       case 0:
         this.kind = undefined;
         ob.style.background = "transparent";
-        ob.className += "grid grid-active";
+        ob.className = "grid grid-active";
+        ob.style.opacity = "1";
         break;
       case 1:
         this.kind = Mold;

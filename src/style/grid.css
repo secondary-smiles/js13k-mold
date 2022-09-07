@@ -1,7 +1,7 @@
 /*General*/
 .grid {
   width: 100%;
-  background: transparent;
+  background-color: transparent;
   /*border: 0.5px solid rgba(0, 0, 0, 0.1);*/
   /*transition: 0.1s;*/
 }
@@ -17,17 +17,17 @@
 
 /*States*/
 .mold {
-  background: #8cffb3;
+  background-color: #8cffb3;
 }
 
 .attractor {
-  background: #5ac7ff;
+  background-color: #5ac7ff;
 }
 
 .repeller {
-  background: #ffe680;
+  background-color: #ffe680;
 }
 
 .wall {
-  background: #000000;
+  background-color: #000000;
 }

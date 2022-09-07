@@ -46,9 +46,9 @@ class Grid {
   }
 
   set state(v: number) {
-    // if (this.state != 0) {
-    //   return;
-    // }
+    if (this.state != 0 || this.opacity != 1) {
+      return;
+    }
     this._sIndex.index = v;
     if (v == 2 || v == 3) {
       gameState.switchP();
@@ -77,7 +77,7 @@ class Grid {
     surroundingMath.forEach((n) => {
       let coords = this.coord.add(n);
       let gridIndex = findGridItem(`grid-${coords.x}-${coords.y}`);
-      if (gridIndex >= 0) {
+      if (gridIndex > -1) {
         returnArr.push(gameData.gridArr![gridIndex]);
       }
     });

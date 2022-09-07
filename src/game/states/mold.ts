@@ -30,8 +30,7 @@ class Mold {
   calcEdges() {
     let returnList: Array<Grid> = [];
     this.occupied.forEach((g) => {
-      let s = g.surrounding();
-      s.forEach((n) => {
+      g.surrounding().forEach((n) => {
         if (n.state == 0) {
           returnList.push(g);
           return;
@@ -76,6 +75,7 @@ class Mold {
           this.p_edges.splice(index, 1);
         }
         g.state = 0;
+        // g.opacity = 1;
       }
     });
   }

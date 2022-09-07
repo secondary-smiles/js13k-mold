@@ -46,7 +46,10 @@ class Grid {
   }
 
   set state(v: number) {
-    if (this.state != 0 || this.opacity != 1) {
+    // if (this.state != 0 || this.opacity != 1) {
+    //   return;
+    // }
+    if (this.state != 0 && v != 0) {
       return;
     }
     this._sIndex.index = v;

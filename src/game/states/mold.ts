@@ -33,7 +33,7 @@ class Mold {
       g.surrounding().forEach((n) => {
         if (n.state == 0) {
           returnList.push(g);
-          return;
+          // return;
         }
       });
     });
@@ -75,7 +75,7 @@ class Mold {
           this.p_edges.splice(index, 1);
         }
         g.state = 0;
-        // g.opacity = 1;
+        g.opacity = 1;
       }
     });
   }

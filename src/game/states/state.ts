@@ -49,7 +49,7 @@ class State {
     switch (this.index) {
       case 0:
         this.kind = undefined;
-        ob.style.background = "transparent";
+        // ob.style.background = "transparent";
         ob.className = "grid grid-active";
         ob.style.opacity = "1";
         break;

@@ -14,8 +14,8 @@ document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
 `;
 
 let gameData: Game = {
-  globalx: 40,
-  globaly: 40,
+  globalx: 70,
+  globaly: 70,
   board: document.querySelector<HTMLDivElement>("#board")!,
   gridArr: undefined,
   mold: undefined,

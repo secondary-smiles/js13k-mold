@@ -10,7 +10,7 @@ async function moldLoop(wait: number = 1000) {
     }
 
     if (edgeRecalcCounter > 5) {
-      gameData.mold?.fade(0.05);
+      gameData.mold?.fade(0.04);
       gameData.mold?.edges;
       edgeRecalcCounter = 0;
     }

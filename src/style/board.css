@@ -5,8 +5,8 @@
 }
 
 #board {
-  width: 90vmin;
-  height: 90vmin;
+  width: 88vmin;
+  height: 88vmin;
 
   display: flex;
   flex-direction: column;

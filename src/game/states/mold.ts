@@ -1,26 +1,17 @@
 import { Grid } from "../grid";
 
 class Mold {
-  source: Grid;
+  source: Array<Grid>;
   occupied: Array<Grid>;
-  lState: number;
   p_edges: Array<Grid>;
 
-  constructor(source: Grid, state: number) {
+  constructor(source: Array<Grid>) {
     this.occupied = [];
     this.source = source;
-    this.lState = state;
-    this.occupied.push(source);
+    this.source.forEach((g) => {
+      this.occupied.push(g);
+    });
     this.p_edges = this.occupied;
-  }
-
-  get state() {
-    return this.lState;
-  }
-
-  set state(v: number) {
-    this.lState = v;
-    this.stateHooks();
   }
 
   stateHooks() {

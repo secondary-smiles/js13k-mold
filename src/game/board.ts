@@ -1,13 +1,21 @@
-import { Grid } from "./grid";
+import { Grid, Vec2 } from "./grid";
 import { gameData } from "../main";
-import { Vec2 } from "./grid";
 import { Mold } from "./states/mold";
+import { Attractor } from "./states/attractor";
+import { Repeller } from "./states/repeller";
 
 async function initBoard() {
   gameData.board.innerHTML = "";
-  // gameData.board.style.border = "0px";
   gameData.gridArr = await initGrid();
-  gameData.mold = new Mold(gameData.gridArr[0], 1);
+  let source: Array<Grid> = [];
+  for (let i = 0; i < 10; i++) {
+    source.push(
+      gameData.gridArr![Math.floor(Math.random() * gameData.gridArr!.length)]
+    );
+  }
+  gameData.mold = new Mold(source);
+  gameData.attractors = new Attractor();
+  gameData.repellers = new Repeller();
 }
 
 async function initGrid(): Promise<Array<Grid>> {

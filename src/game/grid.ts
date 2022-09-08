@@ -116,8 +116,17 @@ function updateGridState(e: Event) {
   // @ts-ignore
   let gridInd = findGridItem(e.target!.id);
   let grid = gameData.gridArr![gridInd];
-  // grid.state = gameState.switchP();
   grid.state = gameState.player;
+  switch (gameState.player) {
+    case 2:
+      gameData.attractors!.occupied.push(grid);
+      console.log(gameData.attractors!.occupied);
+      break;
+    case 3:
+      gameData.repellers!.occupied.push(grid);
+      console.log(gameData.repellers!.occupied);
+      break;
+  }
 }
 
 export {

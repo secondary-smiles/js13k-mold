@@ -14,11 +14,13 @@ document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
 `;
 
 let gameData: Game = {
-  globalx: 70,
-  globaly: 70,
+  globalx: 50,
+  globaly: 50,
   board: document.querySelector<HTMLDivElement>("#board")!,
   gridArr: undefined,
   mold: undefined,
+  attractors: undefined,
+  repellers: undefined,
 };
 
 initButtons();

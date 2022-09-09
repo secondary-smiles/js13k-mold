@@ -1,7 +1,7 @@
 import {gameData} from "../main";
 import {Wall} from "./states/wall";
 
-function generateWalls(n_walls: number = 2, WalllengthArr: Array<number> = [100, 200]) {
+function generateWalls(n_walls: number = 5, WalllengthArr: Array<number> = [50, 600]) {
     gameData.walls = new Wall();
     for (let i = 0; i < n_walls; i++) {
         let startPoint =

@@ -50,14 +50,10 @@ class Grid {
       return;
     }
     this._sIndex.index = v;
-    if (v == 2 || v == 3) {
-      gameState.switchP();
-    }
     this.setHooks();
   }
 
-  setHooks() {
-  }
+  setHooks() {}
 
   surrounding(): Array<Grid> {
     let returnArr: Array<Grid> = [];
@@ -82,7 +78,10 @@ class Grid {
   }
 
   distanceTo(g: Grid): number {
-    return Math.sqrt(Math.pow(this.coord.x - g.coord.x, 2) + Math.pow(this.coord.y - g.coord.y, 2));
+    return Math.sqrt(
+      Math.pow(this.coord.x - g.coord.x, 2) +
+        Math.pow(this.coord.y - g.coord.y, 2)
+    );
   }
 }
 
@@ -115,15 +114,7 @@ function updateGridState(e: Event) {
   let gridInd = findGridItem(e.target!.id);
   let grid = gameData.gridArr![gridInd];
   grid.state = gameState.player;
-  switch (gameState.player) {
-    // Reversed because of GameState switchP()
-    case 2:
-      gameData.repeller!.occupied.push(grid);
-      break;
-    case 3:
-      gameData.attractor!.occupied.push(grid);
-      break;
-  }
+  gameData.attractor!.occupied.push(grid);
 }
 
 export {

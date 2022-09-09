@@ -27,18 +27,6 @@ let gameState = {
       });
     }
   },
-
-  switchP(): number {
-    switch (this.player) {
-      case 2:
-        this.player = 3;
-        break;
-      case 3:
-        this.player = 2;
-        break;
-    }
-    return this.player;
-  },
 };
 
 function initButtons() {

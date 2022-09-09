@@ -1,12 +1,11 @@
 import { Attractor } from "./attractor";
 import { Mold } from "./mold";
-import { Repeller } from "./repeller";
 import { Wall } from "./wall";
 
 class State {
   id: string;
   tIndex: number;
-  kind: Attractor | Mold | Repeller | Wall | undefined;
+  kind: Attractor | Mold | Wall | undefined;
 
   constructor(type: number, id: string) {
     this.tIndex = type;
@@ -20,9 +19,6 @@ class State {
         this.kind = Attractor;
         break;
       case 3:
-        this.kind = Repeller;
-        break;
-      case 4:
         this.kind = Wall;
         break;
       default:
@@ -62,10 +58,6 @@ class State {
         ob.className += " attractor";
         break;
       case 3:
-        this.kind = Repeller;
-        ob.className += " repeller";
-        break;
-      case 4:
         this.kind = Wall;
         ob.className += " wall";
         break;

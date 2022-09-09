@@ -16,7 +16,6 @@ async function moldLoop(wait: number = 1000) {
     }
 
     gameData.attractor?.fade(0.002);
-    gameData.repeller?.fade(0.002);
     try {
       gameData.mold?.grow();
     } catch (e) {}

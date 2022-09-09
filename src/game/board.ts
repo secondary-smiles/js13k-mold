@@ -2,7 +2,6 @@ import { Grid, Vec2 } from "./grid";
 import { gameData } from "../main";
 import { Mold } from "./states/mold";
 import { Attractor } from "./states/attractor";
-import { Repeller } from "./states/repeller";
 
 async function initBoard() {
   gameData.board.innerHTML = "";
@@ -15,7 +14,6 @@ async function initBoard() {
   }
   gameData.mold = new Mold(source);
   gameData.attractor = new Attractor();
-  gameData.repeller = new Repeller();
 }
 
 async function initGrid(): Promise<Array<Grid>> {

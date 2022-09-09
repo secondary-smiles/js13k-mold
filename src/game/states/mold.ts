@@ -1,5 +1,5 @@
 import { Grid } from "../grid";
-import {weightedRandom} from "../weighted-random";
+import { weightedRandom } from "../weighted-random";
 
 class Mold {
   source: Array<Grid>;

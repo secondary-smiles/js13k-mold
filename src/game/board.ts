@@ -14,8 +14,8 @@ async function initBoard() {
     );
   }
   gameData.mold = new Mold(source);
-  gameData.attractors = new Attractor();
-  gameData.repellers = new Repeller();
+  gameData.attractor = new Attractor();
+  gameData.repeller = new Repeller();
 }
 
 async function initGrid(): Promise<Array<Grid>> {

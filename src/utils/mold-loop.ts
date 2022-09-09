@@ -1,5 +1,6 @@
 import { gameState } from "./board-interface";
 import { gameData } from "../main";
+import { weightedRandom } from "../game/weighted-random";
 
 async function moldLoop(wait: number = 1000) {
   let edgeRecalcCounter = 0;
@@ -9,11 +10,14 @@ async function moldLoop(wait: number = 1000) {
       return;
     }
 
-    if (edgeRecalcCounter > 5) {
-      gameData.mold?.fade(0.01);
+    if (edgeRecalcCounter > 25) {
+      weightedRandom();
+      gameData.mold?.fade(0.05);
       gameData.mold?.edges;
       edgeRecalcCounter = 0;
     }
+    gameData.attractor?.fade(0.002);
+    gameData.repeller?.fade(0.002);
     try {
       gameData.mold?.grow();
     } catch (e) {}

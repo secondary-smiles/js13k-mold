@@ -19,8 +19,8 @@ let gameData: Game = {
   board: document.querySelector<HTMLDivElement>("#board")!,
   gridArr: undefined,
   mold: undefined,
-  attractors: undefined,
-  repellers: undefined,
+  attractor: undefined,
+  repeller: undefined,
 };
 
 initButtons();

@@ -9,8 +9,8 @@ type Game = {
   board: HTMLDivElement;
   gridArr: Array<Grid> | undefined;
   mold: Mold | undefined;
-  attractors: Attractor | undefined;
-  repellers: Repeller | undefined;
+  attractor: Attractor | undefined;
+  repeller: Repeller | undefined;
 };
 
 export type { Game };

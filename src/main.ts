@@ -20,7 +20,7 @@ let gameData: Game = {
   gridArr: undefined,
   mold: undefined,
   attractor: undefined,
-  repeller: undefined,
+  walls: undefined,
 };
 
 initButtons();

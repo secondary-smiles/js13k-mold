@@ -2,6 +2,7 @@ import { initBoard, updateBoardStylesGlobal } from "../game/board";
 import { updatePlayerGlobal } from "../game/player";
 import { moldLoop } from "./mold-loop";
 import { gameData } from "../main";
+import {generateWalls} from "../game/generate-walls";
 
 let gameState = {
   state: false,
@@ -19,6 +20,7 @@ let gameState = {
     updateBoardStylesGlobal(this);
 
     if (this.running) {
+      generateWalls()
       moldLoop(1).then();
     }
     if (!this.running) {

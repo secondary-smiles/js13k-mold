@@ -114,7 +114,11 @@ function updateGridState(e: Event) {
   let gridInd = findGridItem(e.target!.id);
   let grid = gameData.gridArr![gridInd];
   grid.state = gameState.player;
-  gameData.attractor!.occupied.push(grid);
+  if (gameData.attractor!.occupied.includes(grid) || gameData.mold!.occupied.includes(grid) || gameData.walls!.occupied.includes(grid)) {
+    return;
+  } else {
+    gameData.attractor!.occupied.push(grid);
+  }
 }
 
 export {

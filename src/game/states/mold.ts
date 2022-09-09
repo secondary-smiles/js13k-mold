@@ -1,4 +1,5 @@
 import { Grid } from "../grid";
+import {weightedRandom} from "../weighted-random";
 
 class Mold {
   source: Array<Grid>;
@@ -42,13 +43,15 @@ class Mold {
   }
 
   grow() {
-    let item = this.p_edges[Math.floor(Math.random() * this.p_edges.length)];
-    item.surrounding().forEach((g) => {
-      if (g.state == 0) {
-        this.occupied.push(g);
-        g.state = 1;
-      }
-    });
+    let item = weightedRandom()[0]!;
+    if (item instanceof Grid) {
+      item.surrounding().forEach((g) => {
+        if (g.state == 0) {
+          this.occupied.push(g);
+          g.state = 1;
+        }
+      });
+    }
   }
 
   fade(amount: number) {

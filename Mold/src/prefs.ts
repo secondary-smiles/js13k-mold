@@ -3,15 +3,18 @@ import { gameData } from "./main";
 class Prefs {
   wall_generation_mode: String;
   num_walls: number;
+  wall_size: number;
   wall_barrier_type: String;
 
   constructor(
     wall_generation_mode: String,
     num_walls: number,
+    wall_size: number,
     wall_barrier_type: String
   ) {
     this.wall_generation_mode = wall_generation_mode;
     this.num_walls = num_walls;
+    this.wall_size = wall_size;
     this.wall_barrier_type = wall_barrier_type;
   }
 }
@@ -58,6 +61,10 @@ async function populatePrefsDiv() {
         <label for="num-walls">Number of Walls</label>
         <input id="num-walls" type="number" value="2">
     </div>
+    <div id="prefs-wall-size" >
+        <label for="wall-size">Wall Size</label>
+        <input id="wall-size" type="number" value="60">
+    </div>
     <div id="prefs-wall-barrier-type">
         <label for="wall-barrier-type">Wall Barrier Type</label>
         <select name="Wall Barrier Type" id="wall-barrier-type">
@@ -77,13 +84,14 @@ async function setPrefs() {
   let num_walls = document.querySelector<HTMLInputElement>("#num-walls")!.value;
   let wall_barrier_type =
     document.querySelector<HTMLSelectElement>("#wall-barrier-type")!.value;
+  let wall_size = document.querySelector<HTMLInputElement>("#wall-size")!.value;
 
-  let newPrefs = new Prefs(
+  gameData.prefs = new Prefs(
     wall_generation_mode,
     Number(num_walls),
+    Number(wall_size),
     wall_barrier_type
   );
-  gameData.prefs = newPrefs;
 }
 
 export { initPrefs, Prefs };

@@ -4,7 +4,7 @@ import { Grid } from "./grid";
 
 function generateWalls(
   n_walls: number = gameData.prefs!.num_walls,
-  wallLengthArr: Array<number> = [20, 60, 120]
+  wallLengthArr: Array<number> = [gameData.prefs!.wall_size]
 ) {
   gameData.walls = new Wall();
   for (let i = 0; i < n_walls; i++) {

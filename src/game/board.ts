@@ -3,7 +3,6 @@ import { gameData } from "../main";
 import { Mold } from "./states/mold";
 import { Attractor } from "./states/attractor";
 
-
 async function initBoard() {
   gameData.board.innerHTML = "";
   gameData.gridArr = await initGrid();

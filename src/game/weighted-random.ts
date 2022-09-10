@@ -1,12 +1,12 @@
-import {gameData} from "../main";
-import {Grid} from "./grid";
+import { gameData } from "../main";
+import { Grid } from "./grid";
 
 function weightedRandom(): (number | Grid | undefined)[] {
   if (gameData.attractor!.occupied.length == 0) {
     return [
       gameData.mold?.edges[
-          Math.floor(Math.random() * gameData.mold?.edges.length)
-          ],
+        Math.floor(Math.random() * gameData.mold?.edges.length)
+      ],
       0,
     ];
   }
@@ -14,7 +14,8 @@ function weightedRandom(): (number | Grid | undefined)[] {
   let selectionA: (number | Grid)[][] = [];
   gameData.mold?.edges.forEach((edge) => {
     gameData.attractor?.occupied.forEach((attractor) => {
-      let score = attractor.distanceTo(edge) * ((1 - attractor.opacity) * (1-edge.opacity));
+      let score =
+        attractor.distanceTo(edge) + (1 - attractor.opacity) * edge.opacity;
       selectionA.push([edge, score]);
     });
   });
@@ -29,12 +30,12 @@ function weightedRandom(): (number | Grid | undefined)[] {
   if (bestScore[0] == undefined) {
     return [
       gameData.mold?.edges[
-          Math.floor(Math.random() * gameData.mold?.edges.length)
-          ],
+        Math.floor(Math.random() * gameData.mold?.edges.length)
+      ],
       0,
     ];
   }
   return bestScore;
 }
 
-export {weightedRandom};
+export { weightedRandom };

@@ -1,11 +1,11 @@
-import {Grid} from "../grid";
+import { Grid } from "../grid";
 
 class Wall {
-    occupied: Array<Grid>;
+  occupied: Array<Grid>;
 
-    constructor() {
-        this.occupied = [];
-    }
+  constructor() {
+    this.occupied = [];
+  }
 }
 
 export { Wall };

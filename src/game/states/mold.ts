@@ -15,19 +15,23 @@ class Mold {
     this.p_edges = this.occupied;
   }
 
-  stateHooks() {
-    // console.log("State has changed");
-  }
-
   calcEdges() {
     let returnList: Array<Grid> = [];
     this.occupied.forEach((g) => {
-      g.surrounding().forEach((n) => {
-        if (n.state == 0) {
-          returnList.push(g);
-          // return;
+      let nRun = true;
+      g.surrounding().forEach((s) => {
+        if (s.state == 3) {
+          nRun = false;
         }
       });
+      if (nRun) {
+        g.surrounding().forEach((n) => {
+          if (n.state == 0 && !returnList.includes(g)) {
+            returnList.push(g);
+            // return;
+          }
+        });
+      }
     });
     this.edges = returnList;
     return returnList;

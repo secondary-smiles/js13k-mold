@@ -19,6 +19,7 @@ class Prefs {
 async function initPrefs() {
   await populatePrefsDiv();
   await toggleShowPrefs();
+  await setPrefs();
   const prefsShowButton =
     document.querySelector<HTMLButtonElement>("#show-prefs");
   const prefsSetButton =
@@ -83,7 +84,6 @@ async function setPrefs() {
     wall_barrier_type
   );
   gameData.prefs = newPrefs;
-  console.log(newPrefs);
 }
 
 export { initPrefs, Prefs };

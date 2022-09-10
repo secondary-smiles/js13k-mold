@@ -1,5 +1,6 @@
 import { Grid } from "../grid";
 import { weightedRandom } from "../weighted-random";
+import { gameData } from "../../main";
 
 class Mold {
   source: Array<Grid>;
@@ -19,11 +20,13 @@ class Mold {
     let returnList: Array<Grid> = [];
     this.occupied.forEach((g) => {
       let nRun = true;
-      g.surrounding().forEach((s) => {
-        if (s.state == 3) {
-          nRun = false;
-        }
-      });
+      if (gameData.prefs!.wall_barrier_type == "strict") {
+        g.surrounding().forEach((s) => {
+          if (s.state == 3) {
+            nRun = false;
+          }
+        });
+      }
       if (nRun) {
         g.surrounding().forEach((n) => {
           if (n.state == 0 && !returnList.includes(g)) {

@@ -1,6 +1,8 @@
 import "./style/style.css";
 
 import { initButtons } from "./utils/board-interface";
+import { initPrefs } from "./prefs";
+
 import { Game } from "./utils/game-globals";
 
 document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
@@ -8,9 +10,11 @@ document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
   <div id="board-holder">
     <div id="board"></div>
   </div>
+</div>
   <button class="board-interface" id="start">Start</button>
   <button class="board-interface" id="stop">Stop</button>
-</div>
+  <button id="show-prefs">Preferences</button>
+  <div id="prefs" ></div>
 `;
 
 let gameData: Game = {
@@ -21,8 +25,10 @@ let gameData: Game = {
   mold: undefined,
   attractor: undefined,
   walls: undefined,
+  prefs: undefined,
 };
 
+initPrefs().then();
 initButtons();
 
 export { gameData };
